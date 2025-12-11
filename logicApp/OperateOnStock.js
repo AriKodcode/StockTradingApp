@@ -53,7 +53,7 @@ export default function OperateOnStock(operation, identifier) {
             stockMarket['stocks'][i]['currentPrice']
           );
           stockMarket['stocks'][i]['currentPrice'] *= 0.95;
-          for (let j = 0; j < stockMarket['stocs'].length; j++) {
+          for (let j = 0; j < stockMarket['stocks'].length; j++) {
             if (
               stockMarket['stocks'][j]['category'] ===
                 stockMarket['stocks'][i]['category'] &&
