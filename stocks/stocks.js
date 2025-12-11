@@ -1,4 +1,4 @@
-const stocks = [
+export const stocks = [
   {
     name: 'BrightFuture Academy',
     id: 'x7l2df9',
