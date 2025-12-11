@@ -2,12 +2,14 @@ import { stockMarket } from '../data/stocks.js';
 import input from 'analiza-sync';
 
 export default function OperateOnStock(operation, identifier) {
+  let found = false;
   if (operation === 'buy' || operation === 'sell') {
     for (let i = 0; i < stockMarket['stocks'].length; i++) {
       if (
         stockMarket['stocks'][i]['name'] === identifier ||
         stockMarket['stocks'][i]['id'] === identifier
       ) {
+        found = true;
         let chice;
         while (true) {
           chice = input(`How many units do you want to ${operation}?`);
@@ -25,7 +27,7 @@ export default function OperateOnStock(operation, identifier) {
               stockMarket['stocks'][i]['currentPrice']
             );
             stockMarket['stocks'][i]['currentPrice'] *= 1.05;
-            for (let j = 0; j < stockMarket['stocs'].length; j++) {
+            for (let j = 0; j < stockMarket['stocks'].length; j++) {
               if (
                 stockMarket['stocks'][j]['category'] ===
                   stockMarket['stocks'][i]['category'] &&
@@ -40,9 +42,10 @@ export default function OperateOnStock(operation, identifier) {
             }
             const time = new Date().toLocaleString().replace(',', '');
             stockMarket['lastUpdated'] = time;
+            console.log('The purchase was successful.');
           }
         } else {
-          console.log('Not enough stock available');
+          console.log('\nNot enough stock available!');
         }
         if (operation === 'sell') {
           stockMarket['stocks'][i]['availableStocks'] += chice;
@@ -65,8 +68,12 @@ export default function OperateOnStock(operation, identifier) {
           }
           const time = new Date().toLocaleString().replace(',', '');
           stockMarket['lastUpdated'] = time;
+          console.log('The purchase was successful.');
         }
       }
     }
+  }
+  if (!found) {
+    console.log('stock not found');
   }
 }

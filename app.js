@@ -1,4 +1,3 @@
-import { stockMarket } from './data/stocks.js';
 import searchStock from './utils/searchStock.js';
 import filterStocksByPrice from './utils/filterStockByPrice.js';
 import OperateOnStock from './logicApp/OperateOnStock.js';
@@ -32,13 +31,13 @@ function app() {
       }
     }
     if (choice === '1') {
-      const idOrName = input('Enter id or name stock');
+      const idOrName = input('Enter id or name stock: ');
       const stock = searchStock(idOrName);
       console.log(stock);
     } else if (choice === '2') {
       let price;
       while (true) {
-        price = Number(input('Enter price'));
+        price = Number(input('Enter price: '));
         if (!isNaN(price)) {
           break;
         } else {
@@ -48,7 +47,7 @@ function app() {
       let above;
       while (true) {
         above = Number(
-          input('press 1 for above the price or 2 for below the price')
+          input('press 1 for above the price or 2 for below the price: ')
         );
         if (!isNaN(above) && (above === 1 || above === 2)) {
           break;
@@ -59,28 +58,26 @@ function app() {
       const stock = filterStocksByPrice(price, above);
       console.log(stock);
     } else if (choice === '3') {
-      let choice;
+      let choice2;
       while (true) {
-        choice = input('press 1 for buy or press 2 for sell');
-        if (choice === '1') {
-          choice = 'buy';
+        choice2 = input('press 1 for buy or press 2 for sell: ');
+        if (choice2 === '1') {
+          choice2 = 'buy';
           break;
-        } else if (choice === '2') {
-          choice = 'sell';
+        } else if (choice2 === '2') {
+          choice2 = 'sell';
           break;
         } else {
           console.log('press only 1 or 2 ');
         }
       }
-      let amount;
-      while (true) {
-        amount = Number(input('Enter ampount'));
-        if (isNaN(amount)) {
-          break;
-        } else {
-          console.log('Enter numbers only');
-        }
-      }
+      let idOrName2 = input('Enter id or name: ');
+      OperateOnStock(choice2, idOrName2);
+    } else if (choice === '4') {
+      appliction = false;
+      console.log('Exit!');
     }
   }
 }
+
+app();
