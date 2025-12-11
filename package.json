@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/AriKodcode/StockTradingApp/issues"
   },
-  "homepage": "https://github.com/AriKodcode/StockTradingApp#readme"
+  "homepage": "https://github.com/AriKodcode/StockTradingApp#readme",
+  "dependencies": {
+    "analiza-sync": "^1.0.1"
+  }
 }
