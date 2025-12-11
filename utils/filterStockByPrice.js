@@ -3,14 +3,14 @@ export default function filterStocksByPrice(givenPrice, above) {
   let newlist = [];
   if (above) {
     for (let i = 0; i < stockMarket['stocks'].length; i++) {
-      if (stockMarket['stocks'][i]['currentPrice'] < givenPrice) {
+      if (stockMarket['stocks'][i]['currentPrice'] > givenPrice) {
         newlist.push(stockMarket['stocks'][i]);
       }
     }
   }
   if (!above) {
     for (let i = 0; i < stockMarket['stocks'].length; i++) {
-      if (stockMarket['stocks'][i]['currentPrice'] > givenPrice) {
+      if (stockMarket['stocks'][i]['currentPrice'] < givenPrice) {
         newlist.push(stockMarket['stocks'][i]);
       }
     }
