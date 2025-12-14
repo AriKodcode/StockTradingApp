@@ -55,6 +55,11 @@ function app() {
           console.log('press only 1 or 2');
         }
       }
+      if (above === 1) {
+        above = true;
+      } else if (above === 2) {
+        above = false;
+      }
       const stock = filterStocksByPrice(price, above);
       console.log(stock);
     } else if (choice === '3') {
